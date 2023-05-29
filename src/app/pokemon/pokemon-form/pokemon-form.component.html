@@ -1,0 +1,69 @@
+<form *ngIf="pokemon" (ngSubmit)="onSubmit" #pokemonForm="ngForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nom</label>
+      <input 
+                type="email" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                required pattern="^[a-zA-Z0-9àéèÇ]{1,25}$"  
+                [(ngModel)] = "pokemon.name"
+                #name ="ngModel" >
+
+      <div id="emailHelp" class="form-text" [hidden]="name.valid || name.pristine">
+            Veuillez renseignez votre nom!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Point de vie</label>
+      <input 
+                type="email" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                required pattern="^[0-9]{1,3}$"  
+                [(ngModel)] = "pokemon.hp"
+                #hp ="ngModel" >
+
+      <div id="emailHelp" class="form-text" [hidden]="hp.valid || hp.pristine">
+            Veuillez renseignez votre point de vie!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Dégats</label>
+      <input 
+                type="email" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                required pattern="^[a-zA-Z0-9àéèÇ]{1,2}$"  
+                [(ngModel)] = "pokemon.cp"
+                #cp ="ngModel" >
+
+      <div id="emailHelp" class="form-text" [hidden]="cp.valid || cp.pristine">
+            Veuillez renseignez votre les points de dégats!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input 
+                type="email" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                required pattern="^[a-zA-Z0-9àéèÇ]{1,25}$"  
+                [(ngModel)] = "pokemon.cp"
+                #name ="ngModel" >
+
+      <div id="emailHelp" class="form-text" [hidden]="name.valid || name.pristine">
+            Veuillez renseignez votre nom!
+      </div>
+    </div>
+    <div class="mb-3 form-check" *ngFor="let type of types">
+      <input type="checkbox" 
+             class="form-check-input" 
+             id="exampleCheck1"
+             [value]="type"
+             [checked]="hasType"
+             [disabled]="!isTypesValid(type)"
+             (change)="selectType($event, type)">
+      <label class="form-check-label" for="exampleCheck1"> {{ type }} </label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!pokemonForm.form.valid">Submit</button>
+</form>

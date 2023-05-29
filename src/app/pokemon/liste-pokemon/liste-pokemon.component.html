@@ -1,0 +1,43 @@
+<h1 style=" text-align: center;"> LISTE DES POKEMONS</h1>
+
+<input 
+  #input
+  (keyup.enter)="selectpokemon(input.value)"
+  type="number"
+  style="width: 10rem; border: solid black 2px;"
+  >
+
+<p *ngIf="pokemonSelected">
+   Vous avez sélectionnez le pokemon : <b> {{ pokemonSelected?.name }}</b>  
+</p>
+
+<p *ngIf="!pokemonSelected">
+   Aucun pokeman retouver.
+</p>
+
+
+<div class="container">
+
+  <div class="row">
+
+      <div *ngFor="let pokemon of pokemonList" class="col-4 md-4">
+        
+        <div  class="card" style="width: 21rem; height: 30rem; margin-bottom: 50px;">
+          <img [src]="pokemon.picture" class="card-img-top" alt="..." style="height: 15rem;">
+          <div class="card-body">
+            <p class="card-text"> <b> {{ pokemon.name | uppercase}} </b></p>
+            <p> {{ pokemon.hp }} </p>
+            <p> {{ pokemon.cp }} </p>
+            <p> {{ pokemon.created | date | uppercase }} </p>
+            <span *ngFor="let type of pokemon.types" class="{{ type | pokemonPipeColor}}"> 
+                {{ type}}
+            </span>
+            <button (click)="DetailsPokemon(pokemon)"  type="button" class="btn btn-primary">Details</button>
+          </div>
+        </div>
+        
+      </div>
+      
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+
+
+<div class="card" style="width: 40rem; margin-left: 450px; margin-top: 150px;">
+    <form #loginForm="ngForm">
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="name" name="name" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password" name="password">
+        </div>
+        <p>
+            <button type="submit" class="btn btn-primary" (click)="login()" *ngIf="!auth.isLoggedIn">Se connecter</button>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-danger" style="margin-left: 50px;" (click)="logout()" *ngIf="auth.isLoggedIn">Deconnexion</button>
+        </p>
+    </form>
+</div>

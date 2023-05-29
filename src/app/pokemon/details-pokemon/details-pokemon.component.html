@@ -1,0 +1,56 @@
+<div class="container" *ngIf="pokemon">
+
+    <div class="row" style="margin-bottom: 100px;">
+        <h1> 
+            <p style="text-align: center;"> Details du Pokemon </p> 
+            <p style="text-align: center;"> {{ pokemon?.name }} </p>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+
+            <div class="card text-center" style="width: 1000px; margin-left: -150px; height: 500px;">
+                <div class="card-header">
+                  Détails
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-4" >
+                        <img [src]="pokemon?.picture" class="card-img-top" alt="..." style="height: 25rem; margin-top: 30px; width: 350px;">
+                    </div>
+                    <div class="col-8">
+                        <div class="mb-5 " style="font-size: 30px;">
+                            <label for="exampleFormControlInput1" class="form-label" style="font-size: 30px;"> Point de vie : </label>
+                            {{ pokemon?.hp }}
+                        </div>
+                        <div class="mb-5" style="font-size: 30px;">
+                            <label for="exampleFormControlInput1" class="form-label" style="font-size: 30px;"> Dégats : </label>
+                            {{ pokemon?.cp }}
+                        </div>
+                        <div class="mb-5" style="font-size: 30px;">
+                            <label for="exampleFormControlInput1" class="form-label" style="font-size: 30px;"> Types : </label>
+                            {{ pokemon?.types }}
+                        </div>
+                        <div class="mb-5" style="font-size: 30px;">
+                            <label for="exampleFormControlInput1" class="form-label" style="font-size: 30px;"> Date : </label>
+                            {{ pokemon?.created | date }}
+                        </div>
+
+                        <button type="button" class="btn btn-danger" (click)="ReourSurList()">Retour</button>
+
+                        
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+</div>
+<div *ngIf="!pokemon">
+    <h1> Erreur lien incorrecte </h1>
+</div>
